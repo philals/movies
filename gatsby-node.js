@@ -1,7 +1,31 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+var imdb = require("imdb-api");
 
- // You can delete this file if you're not using it
+exports.onCreateNode = async ({ node, getNode, boundActionCreators }) => {
+
+    const { createNodeField } = boundActionCreators
+
+    if (node.internal.type === `TrelloCard`) {
+        console.log(`Name: ${node.name}`)
+
+        try {
+            let movie = await imdb.get(node.name, { apiKey: 'a50c4406', timeout: 10000 })
+
+            console.log(`Poster: ${movie.poster.substr(0, 5)}`)
+
+            createNodeField({
+                node,
+                name: `imageUrl`,
+                value: movie.poster,
+            })
+
+        } catch (error) {
+            console.log('ERR: ', error);
+
+            createNodeField({
+                node,
+                name: `imageUrl`,
+                value: null,
+            })
+        }
+    }
+}

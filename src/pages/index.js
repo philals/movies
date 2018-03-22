@@ -10,22 +10,29 @@ const IndexPage = ({ data }) => {
       <p>Now go build something great.</p>
       <Link to="/page-2/">Go to page 2</Link>
       {data.allTrelloCard.edges.map((edge, idx) => {
-        return <p key={idx}>{edge.node.name}</p>
+        return <div>
+          <p key={idx}>{edge.node.name}</p>
+          <img src={edge.node.fields.imageUrl} />
+          </div>
       })}
     </div>
   )
 };
 
 export const query = graphql`
-query AllCards {
-  allTrelloCard(filter: {idBoard: {eq: "59d2bbb9eb383dbdd9dfaff8"}}) {
+query MyName {
+  allTrelloCard {
     edges {
       node {
         id
+        fields{
+          imageUrl
+        }
         name
       }
     }
   }
-}`;
+}
+`;
 
 export default IndexPage
