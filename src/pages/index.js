@@ -1,8 +1,8 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import Link from 'gatsby-link';
+import MovieTile from '../components/MovieTile/MovieTitle.jsx'
 
 const IndexPage = ({ data }) => {
-  console.log('data:', data);
   return (
     <div>
       <h1>Hi people</h1>
@@ -10,11 +10,16 @@ const IndexPage = ({ data }) => {
       <p>Now go build something great.</p>
       <Link to="/page-2/">Go to page 2</Link>
       {data.allTrelloCard.edges.map((edge, idx) => {
+          console.log(edge);
+        
         return <div>
+         
+          <MovieTile edge={edge} key={idx + 'a'} />
+
+
           <p key={idx}>{edge.node.name}</p>
-          <img src={edge.node.fields.imageUrl} />
-          </div>
-      })}
+        </div>
+          })}
     </div>
   )
 };
