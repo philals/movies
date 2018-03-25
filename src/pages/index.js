@@ -1,25 +1,32 @@
 import React from 'react'
 import Link from 'gatsby-link';
-import MovieTile from '../components/MovieTile/MovieTitle.jsx'
+// import MovieGrid from '../components/MovieGrid/MovieGrid.jsx'
+import { GridList, Card, Media, CardText } from 'react-md';
 
 const IndexPage = ({ data }) => {
   return (
-    <div>
+    <div style={{ 'textAlign': 'center' }}>
       <h1>Hi people</h1>
       <p>Welcome to your new Gatsby site.</p>
       <p>Now go build something great.</p>
+
+      {/* <MovieGrid /> */}
+
+        <GridList container="pictures" size={1} component="section" >
+          {data.allTrelloCard.edges.map((edge, key) => {
+            return (
+              <Card key={key} style={{ minWidth: 380 }} >
+                <div style={{ 'textAlign': 'center' }}>
+                  <img className={'md-cell--middle'} style={{ 'margin': 'auto', 'minHeight': 445 }} src={edge.node.fields.imageUrl} alt="Something" />
+                </div>
+                <CardText expandable={false}>{edge.node.name}</CardText>
+              </Card>
+            )
+          })
+          }
+        </GridList >
+
       <Link to="/page-2/">Go to page 2</Link>
-      {data.allTrelloCard.edges.map((edge, idx) => {
-          console.log(edge);
-        
-        return <div>
-         
-          <MovieTile edge={edge} key={idx + 'a'} />
-
-
-          <p key={idx}>{edge.node.name}</p>
-        </div>
-          })}
     </div>
   )
 };

@@ -41,19 +41,9 @@ class MovieTile extends Component {
         const cover = '';
         const coverHeight = mobile ? 445 : 300;
         return (
+    
+
             <Card key={1} raise className="md-grid md-cell md-cell--12">
-                {/* <Link style={{ textDecoration: "none" }} to={'#'}>
-                    <Media
-                        style={{
-                            backgroundImage: `url('${this.props.edge.node.fields.imageUrl ? this.props.edge.node.fields.imageUrl : '/'}')`,
-                            height: `${coverHeight}px`
-                        }}
-                        className="post-preview-cover"
-                    >
-                        <img src="https://ia.media-imdb.com/images/M/MV5BMTc5Mzg3NjI4OF5BMl5BanBnXkFtZTgwNzA3Mzg4MDI@._V1_SX300.jpg" />
-                    
-                    </Media>
-                </Link> */}
                 <CardText expandable={expand}>
                     <img src={this.props.edge.node.fields.imageUrl} />
                 <br/>
