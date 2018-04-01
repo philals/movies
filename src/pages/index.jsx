@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Link from 'gatsby-link';
 import MovieGrid from '../components/MovieGrid/MovieGrid'
-import { GridList, Card, Media, CardText } from 'react-md';
+import { GridList, Card, Media, CardText, TabsContainer, Tabs, Tab } from 'react-md';
 
 class IndexPage extends Component {
   constructor(props) {
@@ -41,14 +41,19 @@ class IndexPage extends Component {
 
     return (
       <div>
-        <a onClick={() => this.toggleState('recommended')}>Recommended</a>
-        <br />        
-        <a onClick={() => this.toggleState('toWatch')}>To Watch</a>
-        <br/>
-        <a onClick={() => this.toggleState('dontRecommend')}>Don't Recommend</a>
-        <br/>
-        <a onClick={() => this.toggleState('avoid')}>Recommend to avoid</a>
-        <br />
+        <TabsContainer panelClassName="md-grid" colored >
+          <Tabs tabId="simple-tab" mobile={true} style={{ background: '#9783ac' }}>
+            <Tab label="Recommended" onClick={() => this.toggleState('recommended')}>
+            </Tab>
+            <Tab label="To Watch" onClick={() => this.toggleState('toWatch')}>
+            </Tab>
+            <Tab label="Don't Recommend" onClick={() => this.toggleState('dontRecommend')}>
+            </Tab>
+            <Tab label="Avoid" onClick={() => this.toggleState('avoid')}>
+            </Tab>
+          </Tabs>
+        </TabsContainer>
+
         <div style={{ 'textAlign': 'center' }}>
 
           {toRender}

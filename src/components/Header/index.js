@@ -5,7 +5,7 @@ const Header = () => (
   <div
     style={{
       background: 'rebeccapurple',
-      marginBottom: '1.45rem',
+      // marginBottom: '1.45rem',
     }}
   >
     <div
@@ -23,7 +23,7 @@ const Header = () => (
             textDecoration: 'none',
           }}
         >
-          Gatsby
+          Phil's Movie List
         </Link>
       </h1>
     </div>
