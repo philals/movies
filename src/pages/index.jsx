@@ -47,18 +47,16 @@ class IndexPage extends Component {
             </Tab>
             <Tab label="To Watch" onClick={() => this.toggleState('toWatch')}>
             </Tab>
-            <Tab label="Don't Recommend" onClick={() => this.toggleState('dontRecommend')}>
+            <Tab label="Don't Recommend" onClick={() => {this.toggleState('dontRecommend'); alert('Not working')}}>
             </Tab>
-            <Tab label="Avoid" onClick={() => this.toggleState('avoid')}>
+            <Tab label="Avoid" onClick={() => {this.toggleState('avoid'); alert('Not working')}}>
             </Tab>
           </Tabs>
         </TabsContainer>
 
-        <div style={{ 'textAlign': 'center' }}>
 
-          {toRender}
+        {toRender}
 
-        </div >
       </div >
     )
   }
