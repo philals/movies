@@ -39,14 +39,16 @@ class IndexPage extends Component {
       }
     })
 
-    let avoid = this.props.data.avoid.edges.map((edge) => {
-      return {
-        name: edge.node.name,
-        imageUrl: edge.node.fields.imageUrl,
-        imdburl: edge.node.fields.imdburl,
-        rating: edge.node.fields.rating,
-      }
-    })
+    // let avoid = this.props.data.avoid.edges.map((edge) => {
+    //   return {
+    //     name: edge.node.name,
+    //     imageUrl: edge.node.fields.imageUrl,
+    //     imdburl: edge.node.fields.imdburl,
+    //     rating: edge.node.fields.rating,
+    //   }
+    // })
+
+    let avoid = [];
 
     this.setState({ recommendedMovies, toWatchMovies, dontRecommend, avoid })
   }
