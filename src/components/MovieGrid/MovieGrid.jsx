@@ -13,7 +13,7 @@ class MovieGrid extends Component {
                     return (
                         <Cell key={key} style={{ minWidth: 380, marginLeft: 'auto', marginRight: 'auto' }} >
                             <div style={{ 'textAlign': 'center' }}>
-                                <img className={'md-cell--middle'} style={{ 'margin': 'auto', 'minHeight': 445 }} src={card.imageUrl} alt={card.name} />
+                                <a href={card.imageUrl}><img className={'md-cell--middle'} style={{ 'margin': 'auto', 'minHeight': 445 }} src={card.imageUrl} alt={card.name} /></a>
                             </div>
                             <CardText expandable={false}>{card.name}</CardText>
                         </Cell>
