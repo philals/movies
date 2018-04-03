@@ -15,28 +15,36 @@ class IndexPage extends Component {
     let recommendedMovies = this.props.data.recommended.edges.map((edge) => {
       return {
         name: edge.node.name,
-        imageUrl: edge.node.fields.imageUrl
+        imageUrl: edge.node.fields.imageUrl,
+        imdburl: edge.node.fields.imdburl,
+        rating: edge.node.fields.rating,
       }
     })
 
     let toWatchMovies = this.props.data.toWatch.edges.map((edge) => {
       return {
         name: edge.node.name,
-        imageUrl: edge.node.fields.imageUrl
+        imageUrl: edge.node.fields.imageUrl,
+        imdburl: edge.node.fields.imdburl,
+        rating: edge.node.fields.rating,
       }
     })
 
     let dontRecommend = this.props.data.dontRecommend.edges.map((edge) => {
       return {
         name: edge.node.name,
-        imageUrl: edge.node.fields.imageUrl
+        imageUrl: edge.node.fields.imageUrl,
+        imdburl: edge.node.fields.imdburl,
+        rating: edge.node.fields.rating,
       }
     })
 
     let avoid = this.props.data.avoid.edges.map((edge) => {
       return {
         name: edge.node.name,
-        imageUrl: edge.node.fields.imageUrl
+        imageUrl: edge.node.fields.imageUrl,
+        imdburl: edge.node.fields.imdburl,
+        rating: edge.node.fields.rating,
       }
     })
 
@@ -105,6 +113,8 @@ query AllMovies {
         idList
         fields {
           imageUrl
+          rating
+          imdburl
         }
         name
       }
@@ -118,6 +128,8 @@ query AllMovies {
         idList
         fields {
           imageUrl
+          rating
+          imdburl
         }
         name
       }
@@ -131,6 +143,8 @@ query AllMovies {
         idList
         fields {
           imageUrl
+          rating
+          imdburl
         }
         name
       }
@@ -143,6 +157,8 @@ query AllMovies {
         idList
         fields {
           imageUrl
+          imdburl
+          rating
         }
         name
       }
