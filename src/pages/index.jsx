@@ -26,7 +26,21 @@ class IndexPage extends Component {
       }
     })
 
-    this.setState({ recommendedMovies, toWatchMovies })
+    let dontRecommend = this.props.data.dontRecommend.edges.map((edge) => {
+      return {
+        name: edge.node.name,
+        imageUrl: edge.node.fields.imageUrl
+      }
+    })
+
+    let avoid = this.props.data.avoid.edges.map((edge) => {
+      return {
+        name: edge.node.name,
+        imageUrl: edge.node.fields.imageUrl
+      }
+    })
+
+    this.setState({ recommendedMovies, toWatchMovies, dontRecommend, avoid })
   }
 
   toggleState(selected) {
@@ -35,9 +49,25 @@ class IndexPage extends Component {
 
   render() {
 
-    let toRender = (this.state.selected == 'recommended') ?
-      <MovieGrid movies={this.state.recommendedMovies} /> :
-      <MovieGrid movies={this.state.toWatchMovies} />;
+    let toRender = null;
+
+    switch (this.state.selected) {
+      case 'recommended':
+        toRender = <MovieGrid movies={this.state.recommendedMovies} />;
+        break;
+      case 'toWatch':
+        toRender = <MovieGrid movies={this.state.toWatchMovies} />;
+        break;
+      case 'dontRecommend':
+        toRender = <MovieGrid movies={this.state.dontRecommend} />;
+        break;
+      case 'avoid':
+        toRender = <MovieGrid movies={this.state.avoid} />;
+        break;
+      default:
+        toRender = <MovieGrid movies={this.state.recommendedMovies} />;
+        break;
+    }
 
     return (
       <div>
@@ -47,9 +77,9 @@ class IndexPage extends Component {
             </Tab>
             <Tab label="To Watch" onClick={() => this.toggleState('toWatch')}>
             </Tab>
-            <Tab label="Don't Recommend" onClick={() => {this.toggleState('dontRecommend'); alert('Not working')}}>
+            <Tab label="Don't Recommend" onClick={() => { this.toggleState('dontRecommend'); }}>
             </Tab>
-            <Tab label="Avoid" onClick={() => {this.toggleState('avoid'); alert('Not working')}}>
+            <Tab label="Avoid" onClick={() => { this.toggleState('avoid'); }}>
             </Tab>
           </Tabs>
         </TabsContainer>
@@ -67,6 +97,32 @@ class IndexPage extends Component {
 
 export const query = graphql`
 query AllMovies {
+   avoid: allTrelloCard(filter: {idList: {eq: "5a53aacd2e413c0399532d42"}}) {
+    edges {
+      node {
+        id
+        idBoard
+        idList
+        fields {
+          imageUrl
+        }
+        name
+      }
+    }
+  }
+   dontRecommend: allTrelloCard(filter: {idList: {eq: "5a53aac4bd0a8ea8ba877850"}}) {
+    edges {
+      node {
+        id
+        idBoard
+        idList
+        fields {
+          imageUrl
+        }
+        name
+      }
+    }
+  }
   recommended: allTrelloCard(filter: {idList: {eq: "59d7e3d0d6d8239fd88a3a2c"}}) {
     edges {
       node {
