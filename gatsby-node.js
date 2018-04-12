@@ -16,7 +16,7 @@ exports.onCreateNode = async ({ node, getNode, boundActionCreators }) => {
             createNodeField({
                 node,
                 name: `imageUrl`,
-                value: movie.poster,
+                value: 'https://res.cloudinary.com/pa/image/fetch/' + movie.poster,
             })
 
             createNodeField({
