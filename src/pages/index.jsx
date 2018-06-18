@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
-import Link from 'gatsby-link';
-import MovieGrid from '../components/MovieGrid/MovieGrid'
-import { GridList, Card, Media, CardText, TabsContainer, Tabs, Tab } from 'react-md';
+import React, { Component } from 'react';
+import { Tab, Tabs, TabsContainer } from 'react-md';
+import MovieGrid from '../components/MovieGrid/MovieGrid';
 
 class IndexPage extends Component {
   constructor(props) {
@@ -85,7 +84,7 @@ class IndexPage extends Component {
           <Tabs tabId="simple-tab" mobile={true} style={{ background: '#9783ac' }}>
             <Tab label="Recommended" onClick={() => this.toggleState('recommended')}>
             </Tab>
-            <Tab label="To Watch" onClick={() => this.toggleState('toWatch')}>
+            <Tab label="My To Watch List" onClick={() => this.toggleState('toWatch')}>
             </Tab>
             <Tab label="Don't Recommend" onClick={() => { this.toggleState('dontRecommend'); }}>
             </Tab>
