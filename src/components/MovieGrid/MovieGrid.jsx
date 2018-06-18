@@ -1,5 +1,6 @@
-import { Grid, Cell, CardText, Button, Avatar, Badge } from 'react-md';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React, { Component } from "react";
+import { Avatar, Button, Cell, Grid } from 'react-md';
 
 class MovieGrid extends Component {
     constructor(props) {
@@ -14,15 +15,15 @@ class MovieGrid extends Component {
                         <Cell key={key} style={{ minWidth: 380, marginLeft: 'auto', marginRight: 'auto' }} >
 
                             <div style={{ 'textAlign': 'center' }}>
-                                <a href={card.imdburl}><img className={'md-cell--middle'} style={{ 'margin': 'auto', 'minHeight': 445 }} src={card.imageUrl} alt={card.name} /></a>
+                                <OutboundLink href={card.imdburl}><img className={'md-cell--middle'} style={{ 'margin': 'auto', 'minHeight': 445 }} src={card.imageUrl} alt={card.name} /></OutboundLink>
                             </div>
 
                             {/* <div style={{marginLeft: 'auto', marginRight: 'auto'}} > */}
                             <div style={{ 'textAlign': 'center' }}>
 
-                                <a href={card.imdburl} target="_blank" > <Button raised >{card.name}</Button></a>
+                                <OutboundLink href={card.imdburl} target="_blank" > <Button raised >{card.name}</Button></OutboundLink>
 
-                                <Avatar style={{ marginLeft:'15px'}}>{card.rating}</Avatar>
+                                <Avatar style={{ marginLeft: '15px' }}>{card.rating}</Avatar>
                             </div>
                         </Cell>
                     )
