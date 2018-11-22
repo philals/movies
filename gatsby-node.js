@@ -8,7 +8,7 @@ exports.onCreateNode = async ({ node, getNode, boundActionCreators }) => {
         console.log(`Name: ${node.name}`)
 
         try {
-            let movie = await imdb.get(node.name, { apiKey: 'a50c4406', timeout: 10000 })
+            let movie = await imdb.get(node.name, { apiKey: process.env.imdbApiKey, timeout: 10000 })
 
             // console.log(`Poster: ${movie.poster.substr(0, 5)}`)
             console.log(`imdburl: ${movie.imdburl}`)
